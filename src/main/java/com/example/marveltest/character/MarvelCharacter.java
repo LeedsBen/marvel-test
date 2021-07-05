@@ -20,6 +20,11 @@ public class MarvelCharacter {
     private String name;
 
     /**
+     * Marvel description of character
+     */
+    private String description;
+
+    /**
      * Marvel Thumbnail data
      */
     private MarvelCharacterThumbnail thumbnail;
@@ -38,6 +43,14 @@ public class MarvelCharacter {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public MarvelCharacterThumbnail getThumbnail() {
