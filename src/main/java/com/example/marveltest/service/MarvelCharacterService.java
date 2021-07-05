@@ -2,6 +2,7 @@ package com.example.marveltest.service;
 
 import com.example.marveltest.character.MarvelCharacter;
 import com.example.marveltest.character.MarvelCharacterDataWrapper;
+import com.example.marveltest.exception.MarvelCharacterNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -143,8 +144,14 @@ public class MarvelCharacterService {
      *
      * @param id - Marvel ID for the character
      * @return information about the character
+     * @throws MarvelCharacterNotFoundException if character ID is not in map
      */
-    public MarvelCharacter getCharacterById(Integer id){
-        return marvelCharacters.get(id);
+    public MarvelCharacter getCharacterById(Integer id) throws MarvelCharacterNotFoundException {
+        MarvelCharacter marvelCharacter = marvelCharacters.get(id);
+        if (marvelCharacter == null) {
+            LOGGER.warn("Character ID not present: " + id);
+            throw new MarvelCharacterNotFoundException("No character found for ID: " + id);
+        }
+        return marvelCharacter;
     }
 }

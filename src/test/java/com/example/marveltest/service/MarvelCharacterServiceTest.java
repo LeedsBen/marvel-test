@@ -3,6 +3,7 @@ package com.example.marveltest.service;
 
 import com.example.marveltest.character.MarvelCharacter;
 import com.example.marveltest.character.MarvelCharacterDataWrapper;
+import com.example.marveltest.exception.MarvelCharacterNotFoundException;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -36,12 +37,24 @@ public class MarvelCharacterServiceTest {
      */
     @Test
     @Order(2)
-    public void checkCharactersTest() {
+    public void checkGoodCharactersTest() {
         MarvelCharacter benParker = mcs.getCharacterById(1009489);
         assertEquals("Ben Parker", benParker.getName());
         MarvelCharacter elektra = mcs.getCharacterById(1009288);
         assertEquals("Elektra", elektra.getName());
         MarvelCharacter jessicaJones = mcs.getCharacterById(1009378);
         assertEquals("Jessica Jones", jessicaJones.getName());
+    }
+
+    /**
+     * Test to ensure bad IDs illicit correct behaviour
+     */
+    @Test
+    @Order(3)
+    public void badCharacterIdTest() {
+        MarvelCharacterNotFoundException mcnfe = assertThrows(MarvelCharacterNotFoundException.class, () -> {
+            mcs.getCharacterById(-1);
+        });
+        assertEquals("No character found for ID: -1", mcnfe.getMessage());
     }
 }
