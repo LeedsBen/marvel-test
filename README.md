@@ -4,7 +4,7 @@ This application is a proxy API for Marvel Characters.
 
 There are two JSON over REST endpoints:
  - '/characters' which returns an array of Marvel Character IDs
- - '/characters/{id}' which returns a short profile of character with the specified Marvel ID
+ - '/characters/{id}' which returns a short profile of the character with the specified Marvel ID
  
  This application requires a Marvel API Key. It is currently configured with the author's public key and the private key has been redacted.
  
