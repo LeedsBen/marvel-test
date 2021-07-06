@@ -39,8 +39,9 @@ public class MarvelCharacterController {
      *
      */
     @GetMapping("/characters")
-    public ResponseEntity<Set<Integer>> characters() {
-        return new ResponseEntity<Set<Integer>>(marvelCharacterService.getCharacterIds(), HttpStatus.FOUND);
+    public ResponseEntity<Integer[]> characters() {
+        Set<Integer> ids = marvelCharacterService.getCharacterIds();
+        return new ResponseEntity<Integer[]>(ids.toArray(new Integer[ids.size()]), HttpStatus.FOUND);
     }
 
     /**

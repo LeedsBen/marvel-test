@@ -9,6 +9,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 /**
  * Exception Handler - map exceptions to HTTP code
+ *
+ * @author Ben Abramson
  */
 @ControllerAdvice
 @RestController
@@ -17,7 +19,7 @@ public class MarvelCharacterResponseEntityExceptionHandler extends ResponseEntit
     /**
      * Handler for Character Not Found Exception
      *
-     * @param mcnfe
+     * @param mcnfe - MarvelCharacterNotFoundException
      * @return 404 with error message
      */
     @ExceptionHandler(MarvelCharacterNotFoundException.class)

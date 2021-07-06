@@ -35,7 +35,7 @@ public class MarvelCharacterControllerTest {
     public void marvelCharacterControllerCharacterIdsTest() {
         when(marvelCharacterService.getCharacterIds()).thenReturn(new HashSet<Integer>());
         MarvelCharacterController marvelCharacterController = new MarvelCharacterController(marvelCharacterService);
-        ResponseEntity<Set<Integer>> characterIds = marvelCharacterController.characters();
+        ResponseEntity<Integer[]> characterIds = marvelCharacterController.characters();
         assertEquals(HttpStatus.FOUND, characterIds.getStatusCode());
     }
 

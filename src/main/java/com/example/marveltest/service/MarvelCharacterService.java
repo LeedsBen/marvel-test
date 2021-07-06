@@ -41,7 +41,7 @@ public class MarvelCharacterService {
     private int characterTotal = 0;
 
     /**
-     * Marvel API Key (for my account!)
+     * Marvel API Key (for my account!) - replace this with your own public key
      */
     private String marvelApiPublicKey = "aff106a14b70b7021658807153e0a0c2";
 
@@ -126,6 +126,9 @@ public class MarvelCharacterService {
      * @return hash of string 'timestamp + private key + public key'
      */
     private String generateHash(String timestamp) {
+        /************************************
+         * Replace this with your own key ! *
+         ************************************/
         String hashme = timestamp + "my-private-key-go-get-your-own!" + marvelApiPublicKey;
         return DigestUtils.md5DigestAsHex(hashme.getBytes());
     }
